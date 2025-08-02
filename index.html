@@ -1,1532 +1,925 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WIN STYLE - Mode Africaine de Qualité</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <style>
-        :root {
-            --primary: #6C5CE7;
-            --secondary: #00CEFF;
-            --dark: #2D3436;
-            --light: #F5F6FA;
-            --gold: #FFD700;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f9f9f9;
-            color: var(--dark);
-        }
-
-        /* Header */
-        header {
-            background: white;
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo {
-            height: 60px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: var(--primary);
-            color: white;
-            border: none;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        /* Header Actions */
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .search-container {
-            display: flex;
-            border: 1px solid #ddd;
-            border-radius: 50px;
-            overflow: hidden;
-        }
-
-        .search-bar {
-            border: none;
-            padding: 0.5rem 1rem;
-            width: 200px;
-            outline: none;
-        }
-
-        .search-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0 1rem;
-            cursor: pointer;
-        }
-
-        .cart-icon {
-            position: relative;
-            cursor: pointer;
-            font-size: 1.2rem;
-            color: var(--dark);
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('INPHB.webp');
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            padding: 0 2rem;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            animation: fadeInDown 1s;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin-bottom: 2rem;
-        }
-
-        .cta-btn {
-            background: var(--primary);
-            color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.3s;
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Sections communes */
-        .section-title {
-            text-align: center;
-            margin: 4rem 0 2rem;
-            font-size: 2rem;
-            color: var(--primary);
-        }
-
-        /* Catégories */
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 0 5%;
-            margin-bottom: 4rem;
-        }
-
-        .category-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .category-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .category-img {
-            height: 250px;
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .category-info {
-            padding: 1.5rem;
-        }
-
-        .category-info h3 {
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-
-        .category-info p {
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .price {
-            font-weight: bold;
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-
-        .voir-btn {
-            display: inline-block;
-            background: var(--secondary);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 1rem;
-            transition: all 0.3s;
-        }
-
-        .voir-btn:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        /* Sections catégories spécifiques */
-        .category-section {
-            padding: 0 5%;
-            margin-bottom: 4rem;
-        }
-
-        .category-products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .category-product-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-        }
-
-        .category-product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-
-        .category-product-img {
-            height: 300px;
-            width: 100%;
-            object-fit: contain;
-            padding: 1rem;
-            background: #f9f9f9;
-        }
-
-        .category-product-info {
-            padding: 1.5rem;
-            border-top: 1px solid #eee;
-        }
-
-        .category-product-title {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .category-product-price {
-            font-weight: bold;
-            color: var(--primary);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .category-product-buttons {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .category-details-btn, .acheter-btn {
-            flex: 1;
-            text-align: center;
-            padding: 0.5rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-        }
-
-        .category-details-btn {
-            background: white;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-        }
-
-        .category-details-btn:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        .acheter-btn {
-            background: var(--primary);
-            color: white;
-            border: 1px solid var(--primary);
-        }
-
-        .acheter-btn:hover {
-            background: #5a4ec9;
-        }
-
-        /* À propos */
-        .about-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            padding: 4rem 5%;
-            background: white;
-        }
-
-        .about-img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .about-content h2 {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-        }
-
-        .about-content p {
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        /* Témoignages */
-        .testimonials {
-            padding: 4rem 5%;
-            background: #f5f5f5;
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .testimonial-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1.5rem;
-        }
-
-        .client-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .client-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .client-name {
-            font-weight: bold;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 4rem 5%;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-col h3 {
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-col a {
-            color: #ddd;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-col a:hover {
-            color: var(--secondary);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            transition: all 0.3s;
-        }
-
-        .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-5px);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: 2rem;
-        }
-
-        /* Styles ajoutés */
-        .highlight {
-            background-color: var(--gold);
-            color: var(--primary);
-            font-weight: bold;
-            padding: 0 2px;
-            border-radius: 3px;
-        }
-
-        .feedback-message {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 50px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 1000;
-        }
-
-       .mini-cart {
-        position: fixed;
-        top: 100px;
-        right: 20px;
-        background: white;
-        border-radius: 10px;
-        box-shadow: 0 5px 25px rgba(0,0,0,0.2);
-        padding: 1.5rem;
-        width: 320px;
-        max-height: 80vh;
-        overflow-y: auto;
-        z-index: 1000;
+:root {
+    --primary: #6C5CE7;
+    --secondary: #00CEFF;
+    --dark: #2D3436;
+    --light: #F5F6FA;
+    --gold: #FFD700;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    color: var(--dark);
+}
+
+/* Header */
+header {
+    background: white;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo {
+    height: 60px;
+    transition: transform 0.3s;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: var(--primary);
+    color: white;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.mobile-menu-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Header Actions */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.search-container {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.search-container:focus-within {
+    box-shadow: 0 0 0 2px var(--primary);
+}
+
+.search-bar {
+    border: none;
+    padding: 0.5rem 1rem;
+    width: 200px;
+    outline: none;
+}
+
+.search-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.search-btn:hover {
+    background: #5a4ec9;
+}
+
+.cart-icon {
+    position: relative;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--dark);
+    transition: transform 0.3s;
+}
+
+.cart-icon:hover {
+    transform: scale(1.1);
+}
+
+.cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('INPHB.webp');
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 0 2rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    animation: fadeInDown 1s;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.cta-btn {
+    background: var(--primary);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.cta-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+    background: #5a4ec9;
+}
+
+/* Sections communes */
+.section-title {
+    text-align: center;
+    margin: 4rem 0 2rem;
+    font-size: 2rem;
+    color: var(--primary);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: var(--secondary);
+    margin: 1rem auto 0;
+}
+
+/* Catégories */
+.categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 0 5%;
+    margin-bottom: 4rem;
+}
+
+.category-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+.category-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.category-img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.category-card:hover .category-img {
+    transform: scale(1.05);
+}
+
+.category-info {
+    padding: 1.5rem;
+}
+
+.category-info h3 {
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+}
+
+.category-info p {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.price {
+    font-weight: bold;
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+.voir-btn {
+    display: inline-block;
+    background: var(--secondary);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.voir-btn:hover {
+    background: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Sections catégories spécifiques */
+.category-section {
+    padding: 0 5%;
+    margin-bottom: 4rem;
+}
+
+.category-products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.category-product-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+.category-product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.category-product-img {
+    height: 300px;
+    width: 100%;
+    object-fit: contain;
+    padding: 1rem;
+    background: #f9f9f9;
+    transition: transform 0.5s;
+}
+
+.category-product-card:hover .category-product-img {
+    transform: scale(1.05);
+}
+
+.category-product-info {
+    padding: 1.5rem;
+    border-top: 1px solid #eee;
+}
+
+.category-product-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+}
+
+.category-product-price {
+    font-weight: bold;
+    color: var(--primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.category-product-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.category-details-btn, .acheter-btn {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.category-details-btn {
+    background: white;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}
+
+.category-details-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.acheter-btn {
+    background: var(--primary);
+    color: white;
+    border: 1px solid var(--primary);
+}
+
+.acheter-btn:hover {
+    background: #5a4ec9;
+}
+
+/* À propos */
+.about-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    padding: 4rem 5%;
+    background: white;
+}
+
+.about-img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.5s;
+}
+
+.about-img:hover {
+    transform: scale(1.02);
+}
+
+.about-content h2 {
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    position: relative;
+}
+
+.about-content h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--secondary);
+    margin-top: 0.5rem;
+}
+
+.about-content p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.about-content ul {
+    margin: 1rem 0 1.5rem 1.5rem;
+}
+
+.about-content ul li {
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+/* Témoignages */
+.testimonials {
+    padding: 4rem 5%;
+    background: #f5f5f5;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.testimonial-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+}
+
+.testimonial-text {
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.client-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.client-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary);
+}
+
+.client-name {
+    font-weight: bold;
+    color: var(--dark);
+}
+
+.client-role {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+/* Footer */
+footer {
+    background: var(--dark);
+    color: white;
+    padding: 4rem 5%;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.footer-col h3 {
+    color: var(--secondary);
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.footer-col h3::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: var(--primary);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-col ul li i {
+    color: var(--secondary);
+    width: 20px;
+    text-align: center;
+}
+
+.footer-col a {
+    color: #ddd;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-col a:hover {
+    color: var(--secondary);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    transition: all 0.3s;
+    color: white;
+}
+
+.social-links a:hover {
+    background: var(--primary);
+    transform: translateY(-5px);
+    color: white;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 2rem;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+/* Styles ajoutés */
+.highlight {
+    background-color: var(--gold);
+    color: var(--primary);
+    font-weight: bold;
+    padding: 0 2px;
+    border-radius: 3px;
+}
+
+.feedback-message {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1000;
+    animation: fadeInUp 0.5s;
+}
+
+.mini-cart {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    padding: 1.5rem;
+    width: 320px;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 1000;
+    animation: fadeInUp 0.3s;
+}
+
+.mini-cart h4 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 1.3rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-items {
+    margin: 1rem 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #eee;
+    gap: 0.8rem;
+}
+
+.cart-item-img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 5px;
+    background: #f5f5f5;
+    padding: 5px;
+    flex-shrink: 0;
+}
+
+.cart-item-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.cart-item-name {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--dark);
+}
+
+.cart-item-price {
+    font-weight: bold;
+    color: var(--primary);
+    font-size: 0.9rem;
+}
+
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.quantity-btn {
+    background: var(--light);
+    border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.quantity-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.cart-total {
+    font-weight: bold;
+    text-align: right;
+    margin: 1rem 0;
+    padding-top: 1rem;
+    border-top: 2px solid var(--primary);
+    font-size: 1.1rem;
+    color: var(--dark);
+}
+
+.cart-total span {
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+.empty-cart {
+    text-align: center;
+    color: #666;
+    padding: 1.5rem 0;
+    font-style: italic;
+}
+
+.close-mini-cart, .commander-panier-btn {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 0.8rem;
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+    font-weight: 600;
+    border: none;
+}
+
+.close-mini-cart {
+    background: #eee;
+    color: var(--dark);
+}
+
+.close-mini-cart:hover {
+    background: #ddd;
+}
+
+.commander-panier-btn {
+    background: var(--gold);
+    color: var(--dark);
+}
+
+.commander-panier-btn:hover {
+    background: #e6c200;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .hero h1 {
+        font-size: 2.5rem;
     }
+    
+    .about-section {
+        gap: 2rem;
+    }
+}
 
-    .mini-cart h4 {
-        color: var(--primary);
-        margin-bottom: 1rem;
-        text-align: center;
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+    
+    header {
+        flex-wrap: wrap;
+        padding: 0.8rem 5%;
+    }
+    
+    .logo-container h1 {
         font-size: 1.3rem;
     }
-
-    .cart-items {
-        margin: 1rem 0;
+    
+    .logo {
+        height: 50px;
     }
-
-    .cart-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.8rem 0;
-        border-bottom: 1px solid #eee;
-        gap: 0.8rem;
-    }
-
-    .cart-item-img {
-        width: 60px;
-        height: 60px;
-        object-fit: contain;
-        border-radius: 5px;
-        background: #f5f5f5;
-        padding: 5px;
-        flex-shrink: 0;
-    }
-
-    .cart-item-info {
-        flex: 1;
-        min-width: 0;
-    }
-
-    .cart-item-name {
-        font-size: 0.9rem;
-        margin-bottom: 0.3rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .cart-item-price {
-        font-weight: bold;
-        color: var(--primary);
-        font-size: 0.9rem;
-    }
-
-    .cart-item-quantity {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        flex-shrink: 0;
-    }
-
-    .quantity-btn {
-        background: var(--light);
-        border: none;
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s;
-        font-weight: bold;
-    }
-
-    .quantity-btn:hover {
-        background: var(--primary);
-        color: white;
-    }
-
-    .cart-total {
-        font-weight: bold;
-        text-align: right;
-        margin: 1rem 0;
-        padding-top: 1rem;
-        border-top: 2px solid var(--primary);
-        font-size: 1.1rem;
-    }
-
-    .cart-total span {
-        color: var(--primary);
-        font-size: 1.2rem;
-    }
-
-    .empty-cart {
-        text-align: center;
-        color: #666;
-        padding: 1.5rem 0;
-        font-style: italic;
-    }
-
-    .close-mini-cart, .commander-panier-btn {
-        display: block;
+    
+    .header-actions {
+        order: 3;
         width: 100%;
+        margin-top: 1rem;
+        justify-content: space-between;
+    }
+    
+    .search-container {
+        flex-grow: 1;
+        margin-right: 1rem;
+    }
+    
+    .search-bar {
+        width: 100%;
+    }
+    
+    .mobile-menu-btn {
+        display: flex;
+    }
+    
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 1rem 5%;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        z-index: 999;
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .nav-links a {
+        padding: 0.8rem 0;
+        border-bottom: 1px solid #f1f1f1;
+    }
+    
+    .hero {
+        height: 60vh;
+        padding: 0 1rem;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .cta-btn {
+        padding: 0.7rem 1.5rem;
+    }
+    
+    .section-title {
+        margin: 3rem 0 1.5rem;
+        font-size: 1.7rem;
+    }
+    
+    .categories, .category-products {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        padding: 0 3%;
+    }
+    
+    .category-img {
+        height: 180px;
+    }
+    
+    .category-product-img {
+        height: 200px;
         padding: 0.8rem;
-        border-radius: 5px;
-        text-align: center;
-        margin-top: 0.8rem;
-        text-decoration: none;
-        transition: all 0.3s;
-        cursor: pointer;
-        font-weight: 600;
     }
-
-    .close-mini-cart {
-        background: #eee;
-        color: var(--dark);
-        border: none;
+    
+    .category-info, .category-product-info {
+        padding: 1.2rem;
     }
-
-    .close-mini-cart:hover {
-        background: #ddd;
+    
+    .about-section {
+        grid-template-columns: 1fr;
+        padding: 3rem 5%;
     }
-
-    .commander-panier-btn {
-        background: var(--gold);
-        color: var(--dark);
-        border: none;
+    
+    .about-img {
+        order: -1;
+        max-width: 400px;
+        margin: 0 auto;
     }
-
-    .commander-panier-btn:hover {
-        background: #e6c200;
+    
+    .category-product-buttons {
+        flex-direction: row;
     }
-
-    @media (max-width: 768px) {
-        .mini-cart {
-            width: 90%;
-            right: 5%;
-            left: 5%;
-            top: 80px;
-        }
+    
+    .category-details-btn, .acheter-btn {
+        padding: 0.5rem;
+        font-size: 0.8rem;
     }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: white;
-                padding: 1rem 5%;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-            }
-
-            .nav-links a {
-                padding: 12px 0;
-                border-bottom: 1px solid #f1f1f1;
-                width: 100%;
-            }
-
-            .mobile-menu-btn {
-                display: flex;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .about-section {
-                grid-template-columns: 1fr;
-            }
-
-            .about-img {
-                order: -1;
-            }
-
-            .product-buttons, .category-product-buttons {
-                flex-direction: column;
-            }
-
-            .search-bar {
-                width: 150px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="logo-container">
-            <img src="logo2.png" alt="WIN STYLE" class="logo">
-            <h1>WIN STYLE</h1>
-        </div>
-
-        <div class="header-actions">
-            <div class="search-container">
-                <input type="text" placeholder="Rechercher..." class="search-bar">
-                <button class="search-btn"><i class="fas fa-search"></i></button>
-            </div>
-            <div class="cart-icon">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-count">0</span>
-            </div>
-        </div>
-
-        <nav class="nav-links">
-            <a href="#accueil">Accueil</a>
-            <a href="#categories">Catégories</a>
-            <a href="#costumes">Produits</a>
-            <a href="#apropos">À propos</a>
-            <a href="#contact">Contact</a>
-        </nav>
-
-        <button class="mobile-menu-btn">
-            <i class="fas fa-bars"></i>
-        </button>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="accueil">
-        <h1 class="animate__animated animate__fadeInDown">Habiller l’excellence, servir la distinction…</h1>
-        <p class="animate__animated animate__fadeIn animate__delay-1s">Découvrez notre collection exclusive de costumes, de vêtements professionnels et modernes</p>
-        <a href="#categories" class="cta-btn animate__animated animate__fadeInUp animate__delay-1s">Voir la collection</a>
-    </section>
-
-    <!-- Catégories -->
-    <section id="categories">
-        <h2 class="section-title animate__animated animate__fadeIn">Nos Catégories</h2>
-        <div class="categories">
-            <!-- Uniformes et occasions  -->
-            <div class="category-card animate__animated animate__fadeInUp">
-                <img src="Marc.png" alt="Uniformes et occasions" class="category-img">
-                <div class="category-info">
-                    <h3>Uniformes et occasions</h3>
-                    <p>Élégance africaine pour toutes occasions</p>
-                    <a href="#Uniformes et occasions" class="voir-btn">VOIR</a>
-                </div>
-            </div>
-
-            <!-- Équipements Industriels -->
-            <div class="category-card animate__animated animate__fadeInUp animate__delay-0.2s">
-                <img src="chaussures de securité.jpeg" alt="Équipements Industriels" class="category-img">
-                <div class="category-info">
-                    <h3>Équipements Industriels</h3>
-                    <p>Matériel de protection et outils professionnels</p>
-                    <a href="#equipements" class="voir-btn">VOIR</a>
-                </div>
-            </div>
-
-            <!-- Librairie -->
-            <div class="category-card animate__animated animate__fadeInUp animate__delay-0.4s">
-                <img src="Cahier.jpeg" alt="Librairie" class="category-img">
-                <div class="category-info">
-                    <h3>Librairie</h3>
-                    <p>Fournitures scolaires et de bureau</p>
-                    <a href="#librairie" class="voir-btn">VOIR</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-      <!-- Section Uniformes et occasions -->
-    <section id="Uniformes et occasions" class="category-section">
-        <h2 class="section-title">Uniformes et occasions</h2>
-        <div class="category-products">
-            <!-- Costumes Hommes -->
-            <div class="category-product-card">
-                <img src="Marc.png" alt="Costume Homme" class="category-product-img">
-                <div class="category-product-info">
-                    <h3 class="category-product-title">Costume Homme Premium</h3>
-                    <div class="category-product-price">
-                        <span>60 000 FCFA si on le paye tissu et coud.</span>
-                    </div>
-                    <div class="category-product-buttons">
-                        <a href="https://lemeciking.github.io/D-tails/" class="category-details-btn">Détails</a>
-                        <button class="acheter-btn" data-product="Costume Homme Premium" data-price="60000" data-img="Marc.png">
-                            Acheter
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-             <div class="category-product-card">
-                <img src="Marc.png" alt="Costume Homme" class="category-product-img">
-                <div class="category-product-info">
-                    <h3 class="category-product-title">Costume Homme Premium</h3>
-                    <div class="category-product-price">
-                        <span>45 000 FCFA si vous venez avec votre tissu.</span>
-                    </div>
-                    <div class="category-product-buttons">
-                        <a href="https://lemeciking.github.io/D-tails/" class="category-details-btn">Détails</a>
-                        <button class="acheter-btn" data-product="Costume Homme Premium" data-price="45000" data-img="Marc.png">
-                            Acheter
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Costumes Femmes -->
-            <div class="category-product-card">
-                <img src="Eureka.png" alt="Costume Femme" class="category-product-img">
-                <div class="category-product-info">
-                    <h3 class="category-product-title">Costume Femme Élégant</h3>
-                    <div class="category-product-price">
-                       <span>60 000 FCFA si on le paye tissu et coud.</span>
-                    </div>
-                    <div class="category-product-buttons">
-                        <button class="acheter-btn" data-product="Costume Femme Élégant" data-price="60000" data-img="Eureka.png">
-                            Acheter
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="category-product-card">
-                <img src="Eureka.png" alt="Costume Femme" class="category-product-img">
-                <div class="category-product-info">
-                    <h3 class="category-product-title">Costume Femme Élégant</h3>
-                    <div class="category-product-price">
-                      <span>45 000 FCFA si vous venez avec votre tissu.</span>
-                    </div>
-                    <div class="category-product-buttons">
-                        <button class="acheter-btn" data-product="Costume Femme Élégant" data-price="45000" data-img="Eureka.png">
-                            Acheter
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tenue de soutenance -->
-            <div class="category-product-card">
-                <img src="Zapata.png" alt="Tenue de soutenance" class="category-product-img">
-                <div class="category-product-info">
-                    <h3 class="category-product-title">Tenue de Soutenance</h3>
-                    <div class="category-product-price">
-                        <span>Prix en fonction de la tenue sur commande</span>
-                    </div>
-                    <div class="category-product-buttons">
-                        <button class="acheter-btn" data-product="Tenue de Soutenance" data-price="0" data-img="Zapata.png">
-                            Acheter
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tenue évènementielle -->
-            <div class="category-product-card">
-                <img src="wa.png" alt="Tenue évènementielle" class="category-product-img">
-                <div class="category-product-info">
-                    <h3 class="category-product-title">Tenue évènementielle</h3>
-                    <div class="category-product-price">
-                        <span>Prix en fonction de la tenue sur commande</span>
-                    </div>
-                    <div class="category-product-buttons">
-                        <button class="acheter-btn" data-product="Tenue évènementielle" data-price="0000" data-img="wa.png">
-                            Acheter
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Prêt à porter  -->
-            <div class="category-product-card">
-                <img src="Soro.png" alt="Prêt à porter " class="category-product-img">
-                <div class="category-product-info">
-                    <h3 class="category-product-title">Prêt à porter </h3>
-                    <div class="category-product-price">
-                        <span>Prix en fonction de la tenue sur commande</span>
-                    </div>
-                    <div class="category-product-buttons">
-                        <button class="acheter-btn" data-product="Prêt à porter " data-price="00000" data-img="Soro.png">
-                            Acheter
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Équipements Industriels -->
-    <section id="equipements" class="category-section">
-        <h2 class="section-title">Équipements Industriels</h2>
-        <div class="category-products">
-            <!-- Combinaison de sécurité -->
-            <div class="category-product-card">
-                <img src="Tenue.jpeg" alt="Combinaison de sécurité" class="category-product-img">
-                <div class="category-product-info">
-                    <h3 class="category-product-title">Combinaison de Sécurité</h3>
-                    <div class="category-product-price">
-                        <span>15 000 FCFA</span>
-                    </div>
-                    <div class="category-product-buttons">
-                        <a href="#" class="category-details-btn">Détails</a>
-                        <button class="acheter-btn" data-product="Combinaison de Sécurité" data-price="15000" data-img="Tenue.jpeg">
-                            Acheter
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Chaussures de sécurité -->
-            <div class="category-product-card">
-                <img src="chaussures de securité.jpeg" alt="Chaussures de sécurité" class="category-product-img">
-                <div class="category-product-info">
-                    <h3 class="category-product-title">Chaussures de Sécurité</h3>
-                    <div class="category-product-price">
-                        <span>15 000 FCFA</span>
-                    </div>
-                    <div class="category-product-buttons">
-                        <button class="acheter-btn" data-product="Chaussures de Sécurité" data-price="15000" data-img="chaussures de securité.jpeg">
-                            Acheter
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Kit tournevis -->
-            <div class="category-product-card">
-                <img src="kit tournevis.jpeg" alt="Kit tournevis" class="category-product-img">
-                <div class="category-product-info">
-                    <h3 class="category-product-title">Kit Tournevis Professionnel</h3>
-                    <div class="category-product-price">
-                        <span>8 500 FCFA</span>
-                    </div>
-                    <div class="category-product-buttons">
-                        <button class="acheter-btn" data-product="Kit Tournevis Professionnel" data-price="8500" data-img="kit tournevis.jpeg">
-                            Acheter
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Blouse -->
-            <div class="category-product-card">
-                <img src="Blouse.jpeg" alt="Blouse" class="category-product-img">
-                <div class="category-product-info">
-                    <h3 class="category-product-title">Blouse</h3>
-                    <div class="category-product-price">
-                        <span>10 000 FCFA</span>
-                    </div>
-                    <div class="category-product-buttons">
-                        <button class="acheter-btn" data-product="Blouse" data-price="10000" data-img="Blouse.jpeg">
-                            Acheter
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Gants -->
-            <div class="category-product-card">
-                <img src="Gants.jpeg" alt="Gants" class="category-product-img">
-                <div class="category-product-info">
-                    <h3 class="category-product-title">Gants</h3>
-                    <div class="category-product-price">
-                        <span>1 000 FCFA</span>
-                    </div>
-                    <div class="category-product-buttons">
-                        <button class="acheter-btn" data-product="Gants" data-price="1000" data-img="Gants.jpeg">
-                            Acheter
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-
-             <!-- Lunettes de sécurité -->
-            <div class="category-product-card">
-                <img src="Lunettes.jpeg" alt="Lunettes de sécurité" class="category-product-img">
-                <div class="category-product-info">
-                    <h3 class="category-product-title">Lunettes de sécurité</h3>
-                    <div class="category-product-price">
-                        <span>2 000 FCFA</span>
-                    </div>
-                    <div class="category-product-buttons">
-                        <button class="acheter-btn" data-product="Lunettes de sécurité" data-price="2000" data-img="Lunettes.jpeg">
-                            Acheter
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Librairie -->
-    <section id="librairie" class="category-section">
-        <h2 class="section-title">Librairie</h2>
-        <div class="category-products">
-            <!-- Paquet rame -->
-            <div class="category-product-card">
-                <img src="rame.jpeg" alt="Paquet rame" class="category-product-img">
-                <div class="category-product-info">
-                    <h3 class="category-product-title">Paquet de Rame (500 feuilles)</h3>
-                    <div class="category-product-price">
-                        <span>3 000 FCFA</span>
-                    </div>
-                    <div class="category-product-buttons">
-                        <button class="acheter-btn" data-product="Paquet de Rame (500 feuilles)" data-price="3000" data-img="rame.jpeg">
-                            Acheter
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Ensemble Géométrique -->
-            <div class="category-product-card">
-                <img src="Ensemble.jpeg" alt="Ensemble Géométrique" class="category-product-img">
-                <div class="category-product-info">
-                    <h3 class="category-product-title">Ensemble Géométrique Complet</h3>
-                    <div class="category-product-price">
-                        <span>1 000 FCFA</span>
-                    </div>
-                    <div class="category-product-buttons">
-                        <button class="acheter-btn" data-product="Ensemble Géométrique Complet" data-price="1000" data-img="Ensemble.jpeg">
-                            Acheter
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Calculatrice -->
-            <div class="category-product-card">
-                <img src="Calculatrice.jpeg" alt="Calculatrice" class="category-product-img">
-                <div class="category-product-info">
-                    <h3 class="category-product-title">Calculatrice Scientifique</h3>
-                    <div class="category-product-price">
-                        <span>8 0000 FCFA</span>
-                    </div>
-                    <div class="category-product-buttons">
-                        <button class="acheter-btn" data-product="Calculatrice Scientifique" data-price="8000" data-img="Calculatrice.jpeg">
-                            Acheter
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-
-             <!-- Stylo -->
-            <div class="category-product-card">
-                <img src="Stylo.webp" alt="Stylo" class="category-product-img">
-                <div class="category-product-info">
-                    <h3 class="category-product-title">Stylo</h3>
-                    <div class="category-product-price">
-                        <span>1 0000 FCFA</span>
-                    </div>
-                    <div class="category-product-buttons">
-                        <button class="acheter-btn" data-product="Stylo" data-price="1000" data-img="Stylo.webp">
-                            Acheter
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-
-
-             <!-- Gomme -->
-            <div class="category-product-card">
-                <img src="Gomme.jpg" alt="Gomme" class="category-product-img">
-                <div class="category-product-info">
-                    <h3 class="category-product-title">Gomme</h3>
-                    <div class="category-product-price">
-                        <span>100 FCFA</span>
-                    </div>
-                    <div class="category-product-buttons">
-                        <button class="acheter-btn" data-product="Gomme" data-price="100" data-img="Gomme.jpg">
-                            Acheter
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-
-
-             <!-- Crayon et critérium -->
-            <div class="category-product-card">
-                <img src="Crayon.jpeg" alt="Crayon et critérium" class="category-product-img">
-                <div class="category-product-info">
-                    <h3 class="category-product-title">Crayon et critérium</h3>
-                    <div class="category-product-price">
-                        <span>Crayon 100 FCFA <br>
-                        Critérium 500 FCFA</span>
-                    </div>
-                    <div class="category-product-buttons">
-                        <button class="acheter-btn" data-product="Crayon et critérium" data-price="600" data-img="Crayon.jpeg">
-                            Acheter
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-
-
-             <!-- Kit de dessin -->
-            <div class="category-product-card">
-                <img src="dessin.jpg" alt="Kit de dessin" class="category-product-img">
-                <div class="category-product-info">
-                    <h3 class="category-product-title">Kit de dessin</h3>
-                    <div class="category-product-price">
-                        <span>9 900 FCFA</span>
-                    </div>
-                    <div class="category-product-buttons">
-                        <button class="acheter-btn" data-product="Kit de dessin" data-price="9900" data-img="dessin.jpg">
-                            Acheter
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-
-             <!-- Cahier grand et petit format -->
-            <div class="category-product-card">
-                <img src="Cahier.jpeg" alt="Cahier grand et petit format" class="category-product-img">
-                <div class="category-product-info">
-                    <h3 class="category-product-title">Cahier grand et petit format</h3>
-                    <div class="category-product-price">
-                        <span>Prix en fonction du cahier</span>
-                    </div>
-                    <div class="category-product-buttons">
-                        <button class="acheter-btn" data-product="Cahier grand et petit format" data-price="0" data-img="Cahier.jpeg">
-                            Acheter
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- À propos -->
-    <section class="about-section" id="apropos">
-        <div class="about-content">
-            <h2>Notre Histoire</h2>
-               <p>WIN STYLE est née, le 01/05/2022, sur les bancs de l’Institut Nationale Polytechnique Félix Houphouët-Boigny (INP-HB) portée par la vision d’un groupe d’étudiants passionnés par la mode et l’entrepreneuriat.</p>
-               <p>Face au besoin croissant de tenues personnalisées de qualité pour les étudiants, les entreprises et les particuliers, nous avons décidé de créer une marque qui allie créativité, précision et professionnalisme.</p>
-               <p>D’abord pensée comme un projet étudiant, Win Style est rapidement devenue une véritable référence sur la cité universitaire grâce à notre exigence de qualité, notre sens du détail et notre capacité à répondre rapidement aux besoins de nos clients.</p>
-            <h2>Notre Mission</h2>
-               <p>Notre mission est simple : offrir à chacun la possibilité d’affirmer son identité à travers des tenues uniques et élégantes, tout en garantissant une expérience client fluide, professionnelle et moderne. Nous concevons, personnalisons et livrons des costumes, blouses et accessoires premium qui marient savoir-faire et innovation.</p>
-          <h2>Notre Vision</h2>
-                <p>Devenir la marque de référence en Côte d’Ivoire pour la confection personnalisée et la vente d’accessoires de qualité, en bâtissant une communauté où chaque client se sent compris, valorisé et bien accompagné.</p>
-          <h2>Nos Valeurs</h2>
-            <ul>
-                <li>Excellence : Offrir des produits et services irréprochables.</li>
-                <li>Créativité : Transformer les idées en pièces uniques.</li>
-                <li>Fiabilité : Respecter nos engagements et nos délais.</li>
-                <li>Innovation : Intégrer de nouvelles techniques pour une expérience moderne.</li>
-            </ul>
-            <h2>Pourquoi nous choisir ?</h2>
-            <ul>
-                <li>Des produits conçus avec soin et expertise.</li>
-                <li>Une équipe jeune, dynamique et professionnelle.</li>
-                <li>Des prix compétitifs sans compromis sur la qualité.</li>
-                <li>Une expérience client personnalisée, rapide et efficace.</li>
-            </ul>
-        </div>
-        <img src="logo2.png" alt="Notre atelier" class="about-img">
-    </section>
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h3>PAIEMENT WIN STYLE</h3>
-                <a href="http://transaction-win-style.vercel.app/" target="_blank" >Transaction-win-style.com</a>
-                <div class="social-links">
-                    <a href="https://www.facebook.com/share/1BuFBGpP55/"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/winstyleci?igsh=aWg0MTNjdHR1dHJn"><i class="fab fa-instagram"></i></a>
-                    <a href="https://wa.me/+2250507971154"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://www.tiktok.com/@winstyleci?_t=ZM-8yUgOaUyZoG&_r=1"><i class="fab fa-tiktok"></i></a>
-                </div>
-            </div>
-
-            <div class="footer-col">
-                <h3>Liens rapides</h3>
-                <ul>
-                    <li><a href="#accueil">Accueil</a></li>
-                    <li><a href="#categories">Catégories</a></li>
-                    <li><a href="#produits">Produits</a></li>
-                    <li><a href="#apropos">À propos</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h3>Contact</h3>
-                <ul>
-                    <li><i class="fas fa-map-marker-alt"></i> Abidjan, Cocody</li>
-                    <li><i class="fas fa-phone"></i> +225 05 07 97 11 54 / 01 03 63 65 77</li>
-                    <li><i class="fas fa-envelope"></i> winstyle04@gmail.com</li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h3>Heures d'ouverture</h3>
-                <ul>
-                    <li>OUVERT 24H/24</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="copyright">
-            <p>&copy; 2022 WIN STYLE. Tous droits réservés.</p>
-        </div>
-    </footer>
-
-   <script>
-  // Variables globales
-const whatsappNumber = "2250507971154";
-let cart = [];
-
-// Initialisation au chargement
-document.addEventListener('DOMContentLoaded', function() {
-    initMobileMenu();
-    initAnimations();
-    initSearch();
-    initCartButtons();
-    loadCartFromLocalStorage();
-});
-
-// Menu mobile
-function initMobileMenu() {
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-
-    menuBtn.addEventListener('click', function() {
-        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-    });
-}
-
-// Animations au scroll
-function initAnimations() {
-    const animateElements = document.querySelectorAll('.animate__animated');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add(entry.target.dataset.animation);
-            }
-        });
-    }, { threshold: 0.1 });
-
-    animateElements.forEach(el => observer.observe(el));
-}
-
-// Système de recherche amélioré
-function initSearch() {
-    const searchBar = document.querySelector('.search-bar');
-    const searchBtn = document.querySelector('.search-btn');
-
-    const performSearch = (term) => {
-        term = term.toLowerCase().trim();
-
-        if (!term) {
-            resetSearch();
-            return;
-        }
-
-        let hasMatches = false;
-
-        // Recherche dans les catégories principales
-        document.querySelectorAll('.category-card').forEach(card => {
-            const title = card.querySelector('.category-info h3').textContent.toLowerCase();
-            const description = card.querySelector('.category-info p').textContent.toLowerCase();
-            const match = title.includes(term) || description.includes(term);
-
-            card.style.display = match ? 'block' : 'none';
-            if (match) hasMatches = true;
-        });
-
-        // Recherche dans les produits
-        document.querySelectorAll('.category-section').forEach(section => {
-            let sectionHasMatches = false;
-
-            section.querySelectorAll('.category-product-card').forEach(product => {
-                const title = product.querySelector('.category-product-title').textContent.toLowerCase();
-                const price = product.querySelector('.category-product-price span').textContent.toLowerCase();
-                const match = title.includes(term) || price.includes(term);
-
-                product.style.display = match ? 'block' : 'none';
-                if (match) {
-                    sectionHasMatches = true;
-                    hasMatches = true;
-                }
-            });
-
-            section.style.display = sectionHasMatches ? 'block' : 'none';
-        });
-
-        document.getElementById('categories').style.display = hasMatches ? 'block' : 'none';
-        highlightMatches(term);
-    };
-
-    const highlightMatches = (term) => {
-        resetHighlights();
-
-        document.querySelectorAll('.category-info h3, .category-product-title').forEach(el => {
-            const text = el.textContent;
-            el.innerHTML = text.replace(new RegExp(term, 'gi'), match =>
-                `<span class="highlight">${match}</span>`);
-        });
-    };
-
-    const resetSearch = () => {
-        document.querySelectorAll('.category-card, .category-product-card').forEach(el => {
-            el.style.display = 'block';
-        });
-        document.querySelectorAll('.category-section, #categories').forEach(el => {
-            el.style.display = 'block';
-        });
-        resetHighlights();
-    };
-
-    const resetHighlights = () => {
-        document.querySelectorAll('.highlight').forEach(el => {
-            el.outerHTML = el.innerHTML;
-        });
-    };
-
-    searchBar.addEventListener('input', () => performSearch(searchBar.value));
-    searchBtn.addEventListener('click', () => performSearch(searchBar.value));
-    searchBar.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') performSearch(searchBar.value);
-    });
-}
-
-// Gestion du panier
-function initCartButtons() {
-    document.querySelectorAll('.acheter-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const productName = this.getAttribute('data-product');
-            const price = parseInt(this.getAttribute('data-price'));
-            const img = this.getAttribute('data-img');
-
-            addToCart(productName, price, img);
-
-            this.innerHTML = '<i class="fas fa-check"></i> Ajouté';
-            this.style.background = '#2ecc71';
-            setTimeout(() => {
-                this.innerHTML = 'Acheter';
-                this.style.background = 'var(--primary)';
-            }, 2000);
-        });
-    });
-
-    document.querySelector('.cart-icon').addEventListener('click', function(e) {
-        e.preventDefault();
-        showMiniCart();
-    });
-}
-
-function addToCart(productName, price, img) {
-    const existingItem = cart.find(item => item.name === productName);
-
-    if (existingItem) {
-        existingItem.quantity += 1;
-    } else {
-        cart.push({
-            name: productName,
-            price: price,
-            img: img,
-            id: generateProductId(productName),
-            quantity: 1
-        });
+    
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
     }
-
-    updateCartCount();
-    showFeedback(`${productName} ajouté au panier !`);
-    saveCartToLocalStorage();
-}
-
-function updateCartCount() {
-    const countElement = document.querySelector('.cart-count');
-    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-    countElement.textContent = totalItems;
-    countElement.classList.add('animate__animated', 'animate__bounceIn');
-
-    setTimeout(() => {
-        countElement.classList.remove('animate__bounceIn');
-    }, 1000);
-}
-
-function showMiniCart() {
-    const existingCart = document.querySelector('.mini-cart');
-    if (existingCart) existingCart.remove();
-
-    const miniCart = document.createElement('div');
-    miniCart.className = 'mini-cart animate__animated animate__fadeInUp';
-
-    if (cart.length === 0) {
-        miniCart.innerHTML = `
-            <div class="mini-cart-header">
-                <h4>Votre Panier</h4>
-            </div>
-            <div class="empty-cart">Votre panier est vide</div>
-            <div class="cart-footer">
-                <button class="close-mini-cart">Fermer</button>
-            </div>
-        `;
-    } else {
-        let cartContent = `
-            <div class="mini-cart-header">
-                <h4>Votre Panier (${cart.reduce((total, item) => total + item.quantity, 0)} articles)</h4>
-            </div>
-            <div class="cart-items-container">
-                <div class="cart-items">
-        `;
-
-        let total = 0;
-
-        cart.forEach(item => {
-            const itemTotal = item.price * item.quantity;
-            total += itemTotal;
-
-            cartContent += `
-                <div class="cart-item">
-                    <img src="${item.img}" alt="${item.name}" class="cart-item-img" onerror="this.src='default-product.jpg'">
-                    <div class="cart-item-info">
-                        <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-price">${item.price.toLocaleString()} FCFA</div>
-                    </div>
-                    <div class="cart-item-quantity">
-                        <button class="quantity-btn minus" data-id="${item.id}">-</button>
-                        <span>${item.quantity}</span>
-                        <button class="quantity-btn plus" data-id="${item.id}">+</button>
-                    </div>
-                </div>
-            `;
-        });
-
-        cartContent += `
-                </div>
-            </div>
-            <div class="cart-footer">
-                <div class="cart-total">Total: <span>${total.toLocaleString()} FCFA</span></div>
-                <button class="commander-panier-btn">Commander via WhatsApp</button>
-                <button class="close-mini-cart">Fermer</button>
-            </div>
-        `;
-
-        miniCart.innerHTML = cartContent;
-
-        miniCart.querySelectorAll('.quantity-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const itemId = this.getAttribute('data-id');
-                const isPlus = this.classList.contains('plus');
-                updateCartItemQuantity(itemId, isPlus);
-            });
-        });
-
-        miniCart.querySelector('.commander-panier-btn').addEventListener('click', commanderPanier);
-    }
-
-    miniCart.querySelector('.close-mini-cart').addEventListener('click', () => {
-        miniCart.classList.add('animate__fadeOut');
-        setTimeout(() => miniCart.remove(), 500);
-    });
-
-    document.body.appendChild(miniCart);
-}
-
-function updateCartItemQuantity(itemId, isPlus) {
-    const itemIndex = cart.findIndex(item => item.id === itemId);
-
-    if (itemIndex !== -1) {
-        if (isPlus) {
-            cart[itemIndex].quantity += 1;
-        } else {
-            if (cart[itemIndex].quantity > 1) {
-                cart[itemIndex].quantity -= 1;
-            } else {
-                cart.splice(itemIndex, 1);
-            }
-        }
-
-        saveCartToLocalStorage();
-        updateCartCount();
-        showMiniCart();
+    
+    .mini-cart {
+        width: 90%;
+        right: 5%;
+        left: 5%;
+        top: 90px;
     }
 }
 
-function commanderPanier() {
-    if (cart.length === 0) return;
-
-    let message = "Bonjour *WIN STYLE* ,\n\nJe souhaite commander les produits suivants :\n\n";
-
-    let total = 0;
-    cart.forEach(item => {
-        const itemTotal = item.price * item.quantity;
-        total += itemTotal;
-        message += `- ${item.name} (x${item.quantity}) : ${item.price.toLocaleString()} FCFA\n`;
-    });
-
-    message += `\nTotal : ${total.toLocaleString()} FCFA\n\n`;
-    message += "Merci de me contacter pour finaliser la commande.";
-
-    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
-}
-
-function generateProductId(name) {
-    return 'REF-' + name.replace(/\s+/g, '').slice(0, 3).toUpperCase() + Math.floor(100 + Math.random() * 900);
-}
-
-function showFeedback(message) {
-    const feedback = document.createElement('div');
-    feedback.className = 'feedback-message animate__animated animate__fadeInUp';
-    feedback.textContent = message;
-    document.body.appendChild(feedback);
-
-    setTimeout(() => {
-        feedback.classList.add('animate__fadeOut');
-        setTimeout(() => feedback.remove(), 500);
-    }, 3000);
-}
-
-function saveCartToLocalStorage() {
-    localStorage.setItem('winstyle_cart', JSON.stringify(cart));
-}
-
-function loadCartFromLocalStorage() {
-    const savedCart = localStorage.getItem('winstyle_cart');
-    if (savedCart) {
-        cart = JSON.parse(savedCart);
-        updateCartCount();
+@media (max-width: 480px) {
+    html {
+        font-size: 13px;
+    }
+    
+    .categories, .category-products {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero h1 {
+        font-size: 1.7rem;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .category-product-buttons {
+        flex-direction: column;
+    }
+    
+    .category-details-btn, .acheter-btn {
+        width: 100%;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
     }
 }
-</script>
-</body>
-</html>
